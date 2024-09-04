@@ -1,0 +1,49 @@
+@import "./adaptive";
+@import "./mixins";
+@import "./colors";
+@import "./typography";
+
+* {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    color: $text-primary;
+
+    @include M_Regular();
+}
+
+#app {
+    min-height: 100vh;
+}
+
+h1 {
+    @include XXL_Bold();
+}
+
+h2 {
+    @include XL_Bold();
+}
+
+a {
+    width: max-content;
+
+    text-decoration: none;
+    @include linkStyles;
+
+    * {
+        @include linkStyles;
+    }
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+input,
+textarea,
+button {
+    outline: 0;
+}

@@ -1,0 +1,49 @@
+.AuthPage {
+    display: flex;
+
+    &__infoBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 62px;
+
+        width: 45%;
+        height: 100vh;
+
+        background-color: $background-base-primary;
+
+        &__img {
+            width: 100%;
+        }
+
+        &__textBlock {
+            display: flex;
+            flex-direction: column;
+            gap: 44px;
+
+            padding-left: 40px;
+            padding-right: 90px;
+
+            &__mainText {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                width: 100%;
+
+                &__description {
+                    @include L_Regular;
+                }
+            }
+        }
+    }
+
+    &__formBlock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 55%;
+
+        padding: 0 160px;
+    }
+}

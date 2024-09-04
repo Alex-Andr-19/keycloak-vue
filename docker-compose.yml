@@ -1,0 +1,57 @@
+version: "3.3"
+
+services:
+    postgres:
+        image: postgres:latest
+        container_name: postgres-kc-acg
+        environment:
+            - POSTGRES_DB=keycloak
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        expose:
+          - 5432
+        volumes:
+          - database_kc_acg:/var/lib/postgresql/data
+        networks:
+            - kc-acg
+        restart: unless-stopped
+
+    keycloak:
+        image: quay.io/keycloak/keycloak:24.0.2
+        container_name: keycloak-kc-acg
+        environment:
+            KC_DB: postgres
+            KC_DB_URL: jdbc:postgresql://postgres-kc-acg:5432/keycloak
+            KC_DB_USERNAME: postgres
+            KC_DB_PASSWORD: postgres
+            KC_HOSTNAME: dev_idnn.acgnn.ru
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: admin
+        ports:
+            - 9020:8080
+        volumes:
+            - ../themes/acgnn-kc-theme:/opt/keycloak/themes/acgnn-kc-theme
+            - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
+        depends_on:
+            - postgres
+        networks:
+            - kc-acg
+        command: ["start-dev"]
+        restart: unless-stopped
+
+volumes:
+  database_kc_acg:
+
+networks:
+    kc-acg:
+        external: true
+
+# - docker-compose down
+# - docker-compose up -d
+# KC_HTTPS_CERTIFICATE_FILE: /app/cert/domain_name.pem
+# KC_HTTPS_CERTIFICATE_KEY_FILE: /app/cert/private.pem
+# SHA для сети kc-acg
+# 95d7ab2e9095dfd6c6de994d1e29c2d5c43d0e9f1ee600de937fbfb067b49ad6
+
+# Локальная сеть на моём компе
+# 6332c3748f515c63a9eadb7bc5b733d12146f740e91e1279c1d23b51cea427b6

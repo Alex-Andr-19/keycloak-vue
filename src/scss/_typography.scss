@@ -1,0 +1,81 @@
+@mixin XXL_Bold() {
+    font-family: "Roboto-Bold";
+    @include font-size((32, 38));
+}
+
+@mixin XL_Bold() {
+    font-family: "Roboto-Bold";
+    @include font-size((24, 28));
+}
+
+/* ===== Text L ===== */
+
+@mixin L_Size() {
+    @include font-size((20, 24));
+}
+
+@mixin L_Medium() {
+    font-family: "Roboto-Medium";
+    @include L_Size();
+}
+
+@mixin L_Regular() {
+    font-family: "Roboto-Regular";
+    @include L_Size();
+}
+
+/* ================== */
+
+/* ===== Text M ===== */
+
+@mixin M_Size() {
+    @include font-size((20, 26), (18, 22), (16, 20));
+}
+
+@mixin M_Medium() {
+    font-family: "Roboto-Medium";
+    @include M_Size();
+}
+
+@mixin M_Regular() {
+    font-family: "Roboto-Regular";
+    @include M_Size();
+}
+
+/* ================== */
+
+/* ===== Text S ===== */
+
+@mixin S_Size() {
+    @include font-size((16, 20), (16, 20), (14, 18), (12, 16));
+}
+
+@mixin S_Medium() {
+    font-family: "Roboto-Medium";
+    @include S_Size();
+}
+
+@mixin S_Regular() {
+    font-family: "Roboto-Regular";
+    @include S_Size();
+}
+
+/* ================== */
+
+/* ===== Text XS ===== */
+
+@mixin XS_Size() {
+    @include font-size((14, 20), (12, 18), (10, 16));
+}
+
+@mixin XS_Medium() {
+    font-family: "Roboto-Medium";
+    @include XS_Size();
+}
+
+@mixin XS_Regular() {
+    font-family: "Roboto-Regular";
+    @include XS_Size();
+}
+
+/* ================== */
